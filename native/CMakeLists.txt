@@ -20,7 +20,6 @@ target_include_directories(ulanzi-audio-helper PRIVATE include src)
 target_compile_definitions(ulanzi-audio-helper PRIVATE
   UNICODE
   _UNICODE
-  WIN32_LEAN_AND_MEAN
   NOMINMAX
 )
 

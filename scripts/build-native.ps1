@@ -52,7 +52,7 @@ function Build-WithMsvc {
 call "$vsDevCmd" -arch=x64 -host_arch=x64
 if errorlevel 1 exit /b 1
 cd /d "$nativeDir"
-cl /nologo /EHsc /std:c++17 /O2 /utf-8 /DUNICODE /D_UNICODE /DWIN32_LEAN_AND_MEAN /DNOMINMAX /Iinclude /Isrc /Fo"$outDir\\" /Fe"$outDir\ulanzi-audio-helper.exe" src\main.cpp src\audio_engine.cpp src\ipc_server.cpp src\process_info.cpp /link ole32.lib oleaut32.lib uuid.lib shlwapi.lib version.lib /SUBSYSTEM:CONSOLE
+cl /nologo /EHsc /std:c++17 /O2 /utf-8 /DUNICODE /D_UNICODE /DNOMINMAX /Iinclude /Isrc /Fo"$outDir\\" /Fe"$outDir\ulanzi-audio-helper.exe" src\main.cpp src\audio_engine.cpp src\ipc_server.cpp src\process_info.cpp /link ole32.lib oleaut32.lib uuid.lib shlwapi.lib version.lib /SUBSYSTEM:CONSOLE
 exit /b %ERRORLEVEL%
 "@
   Invoke-CmdBuild $batch
@@ -86,12 +86,23 @@ if ($env:OS -ne "Windows_NT") {
 
 Write-Info "Building ulanzi-audio-helper.exe (x64)"
 $exe = $null
-try { $exe = Build-WithMsvc } catch { Write-Err $_; $exe = $null }
+$msvcCompileFailed = $false
+try {
+  $exe = Build-WithMsvc
+} catch {
+  Write-Err $_
+  $msvcCompileFailed = $true
+  $exe = $null
+}
 if (-not $exe) {
   try { $exe = Build-WithCMake } catch { Write-Err $_; $exe = $null }
 }
 
 if (-not $exe) {
+  if ($msvcCompileFailed) {
+    Write-Err "Visual Studio was found, but compiling the helper failed. See the C++ errors above."
+    exit 1
+  }
   Write-Err "No C++ compiler was found. CMake is optional; you need Visual Studio Build Tools."
   Write-Host ""
   Write-Host "Install once with winget, then run this script again:"

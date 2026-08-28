@@ -12,18 +12,29 @@
 #include <utility>
 #include <vector>
 
-#include <initguid.h>
-#include <propkeydef.h>
 #include <mmdeviceapi.h>
 #include <audiopolicy.h>
 #include <endpointvolume.h>
-#include <functiondiscoverykeys_devpkey.h>
+#include <oleauto.h>
 #include <objbase.h>
 #include <propidl.h>
 
 using namespace std;
 
 namespace {
+
+// PKEY_Device_FriendlyName, inlined so we never include
+// functiondiscoverykeys_devpkey.h (Windows SDK 10.0.26100 fails to compile it
+// with MSVC unless PROPERTYKEY / DEFINE_PROPERTYKEY includes are exact).
+struct DevicePropertyKey {
+    GUID fmtid;
+    DWORD pid;
+};
+
+const DevicePropertyKey kPkeyDeviceFriendlyName = {
+    {0xa45c254e, 0xdf1c, 0x4efd, {0x80, 0x20, 0x67, 0xd1, 0x46, 0xa8, 0x50, 0xe0}},
+    14
+};
 
 double clamp01(double value) {
     if (value < 0) return 0;
@@ -373,7 +384,9 @@ Json AudioEngine::list_devices(const std::string& flow) {
         if (SUCCEEDED(item->OpenPropertyStore(STGM_READ, props.put())) && props) {
             PROPVARIANT var;
             PropVariantInit(&var);
-            if (SUCCEEDED(props->GetValue(PKEY_Device_FriendlyName, &var)) && var.vt == VT_LPWSTR) {
+            const PROPERTYKEY& friendlyNameKey =
+                *reinterpret_cast<const PROPERTYKEY*>(&kPkeyDeviceFriendlyName);
+            if (SUCCEEDED(props->GetValue(friendlyNameKey, &var)) && var.vt == VT_LPWSTR) {
                 name = wide_to_utf8(var.pwszVal);
             }
             PropVariantClear(&var);

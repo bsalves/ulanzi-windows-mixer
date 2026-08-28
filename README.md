@@ -75,7 +75,7 @@ Instalador Inno Setup (opcional, gera EXE x64):
 installer\windowsaudio.iss
 ```
 
-Compile com [Inno Setup 6](https://jrsoftware.org/isinfo.php). A saída vai para `dist\UlanziWindowsAudioMixer-1.1.1-x64.exe`.
+Compile com [Inno Setup 6](https://jrsoftware.org/isinfo.php). A saída vai para `dist\UlanziWindowsAudioMixer-1.1.3-x64.exe`.
 
 Pacote zip:
 
