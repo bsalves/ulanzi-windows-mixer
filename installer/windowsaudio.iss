@@ -1,5 +1,5 @@
 #define MyAppName "Ulanzi Windows Audio Mixer"
-#define MyAppVersion "1.1.1"
+#define MyAppVersion "1.1.2"
 #define MyAppPublisher "Bruno Alves"
 #define MyPluginDir "com.ulanzi.windowsaudio.ulanziPlugin"
 
@@ -12,7 +12,7 @@ DefaultDirName={userappdata}\Ulanzi\UlanziDeck\Plugins\{#MyPluginDir}
 DisableDirPage=yes
 DisableProgramGroupPage=yes
 OutputDir=..\dist
-OutputBaseFilename=UlanziWindowsAudioMixer-1.1.1-x64
+OutputBaseFilename=UlanziWindowsAudioMixer-1.1.2-x64
 Compression=lzma
 SolidCompression=yes
 ArchitecturesAllowed=x64compatible

@@ -1,6 +1,6 @@
 {
   "name": "ulanzi-windows-audio-mixer",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": true,
   "description": "Ulanzi Studio plugin for Windows master and per-application volume control via WASAPI.",
   "type": "module",

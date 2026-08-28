@@ -7,15 +7,19 @@
 #include <algorithm>
 #include <atomic>
 #include <map>
+#include <mutex>
+#include <thread>
 #include <utility>
+#include <vector>
+
+#include <initguid.h>
+#include <propkeydef.h>
+#include <mmdeviceapi.h>
 #include <audiopolicy.h>
 #include <endpointvolume.h>
 #include <functiondiscoverykeys_devpkey.h>
-#include <mmdeviceapi.h>
 #include <objbase.h>
-#include <mutex>
-#include <thread>
-#include <vector>
+#include <propidl.h>
 
 using namespace std;
 
