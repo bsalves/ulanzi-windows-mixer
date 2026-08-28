@@ -37,7 +37,7 @@ export function normalizeSettings(raw, fallbackMode = "application") {
         executable: mode === "master" ? "" : executable,
         displayName: mode === "master" ? (displayName || "SYSTEM") : displayName,
         step,
-        pressAction: "toggleMute",
+        pressAction: normalizePressAction(input.pressAction),
         sessionMode,
     };
     const pid = asOptionalNumber(input.pid);
@@ -47,6 +47,12 @@ export function normalizeSettings(raw, fallbackMode = "application") {
     if (sessionId)
         settings.sessionId = sessionId;
     return settings;
+}
+export function normalizePressAction(value) {
+    if (value === "volumeUp" || value === "volumeDown" || value === "toggleMute") {
+        return value;
+    }
+    return "toggleMute";
 }
 export function normalizeStep(value) {
     const n = typeof value === "number" ? value : Number(value);

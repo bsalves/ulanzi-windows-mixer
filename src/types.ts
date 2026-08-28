@@ -7,7 +7,7 @@ export type StepPercent = (typeof VALID_STEPS)[number];
 
 export type VolumeMode = "master" | "application" | "input" | "output";
 export type SessionMode = "all" | "first";
-export type PressAction = "toggleMute";
+export type PressAction = "toggleMute" | "volumeUp" | "volumeDown";
 
 export interface ActionSettings {
   mode: VolumeMode;

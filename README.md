@@ -87,7 +87,7 @@ Instalador Inno Setup (opcional, gera EXE x64):
 installer\windowsaudio.iss
 ```
 
-Compile com [Inno Setup 6](https://jrsoftware.org/isinfo.php). A saída vai para `dist\UlanziWindowsAudioMixer-1.0.0-x64.exe`.
+Compile com [Inno Setup 6](https://jrsoftware.org/isinfo.php). A saída vai para `dist\UlanziWindowsAudioMixer-1.1.0-x64.exe`.
 
 Pacote zip:
 
@@ -100,8 +100,12 @@ npm run package
 1. Arraste **Windows Master Volume** para um knob.
    - Girar: volume do Windows ± o passo configurado (padrão 2%).
    - Pressionar: mute/unmute (o volume **não** é zerado).
-2. Arraste **Application Volume** para outro knob, abra o inspector e escolha o aplicativo (Discord, Chrome, Spotify, …).
-3. A lista de aplicativos atualiza sozinha quando uma sessão de áudio aparece ou some. O botão **Refresh Applications** existe, mas não é necessário no uso normal.
+2. Arraste **Application Volume** para um knob ou tecla, abra o inspector e escolha o aplicativo (Discord, Chrome, Spotify, …).
+3. Em **Press action** escolha o que o botão/knob faz ao pressionar:
+   - **Toggle Mute** — mudo/unmute (padrão; o volume **não** é zerado).
+   - **Volume Up** / **Volume Down** — sobe ou desce o volume no passo configurado.
+4. Para duas teclas do mesmo app: uma com Volume Up e outra com Volume Down.
+5. A lista de aplicativos atualiza sozinha quando uma sessão de áudio aparece ou some. O botão **Refresh Applications** existe, mas não é necessário no uso normal.
 
 Se o Chrome ainda não estiver tocando nada, o display mostra `Waiting for audio...` e passa a controlar o volume assim que a sessão existir.
 

@@ -24,6 +24,14 @@ describe("settings persistence", () => {
     assert.equal(settings.sessionMode, "all");
     assert.equal(settings.pressAction, "toggleMute");
   });
+
+  it("persists volume up/down press actions", () => {
+    const up = normalizeSettings({ executable: "Discord.exe", pressAction: "volumeUp" });
+    const down = normalizeSettings({ executable: "Discord.exe", pressAction: "volumeDown" });
+    assert.equal(up.pressAction, "volumeUp");
+    assert.equal(down.pressAction, "volumeDown");
+    assert.equal(persistableSettings(up).pressAction, "volumeUp");
+  });
 });
 
 describe("display formatting", () => {

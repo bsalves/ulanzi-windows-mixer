@@ -3,7 +3,7 @@
   "Name": "Windows Audio Mixer",
   "Description": "Control Windows master volume and per-application sessions from Ulanzi knobs and keys using WASAPI.",
   "Icon": "resources/icons/plugin.svg",
-  "Version": "1.0.0",
+  "Version": "1.1.0",
   "Category": "Audio",
   "CategoryIcon": "resources/icons/plugin.svg",
   "CodePath": "plugin/app.js",

@@ -115,6 +115,14 @@ export class ActionController {
     const action = this.actions.get(context);
     if (!action) return;
     try {
+      if (action.settings.pressAction === "volumeUp") {
+        await this.rotate(context, 1);
+        return;
+      }
+      if (action.settings.pressAction === "volumeDown") {
+        await this.rotate(context, -1);
+        return;
+      }
       if (action.kind === "master") {
         await this.audio.toggleMute("master");
       } else {

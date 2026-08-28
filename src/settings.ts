@@ -1,4 +1,4 @@
-import { VALID_STEPS, type ActionSettings, type StepPercent, type VolumeMode } from "./types.js";
+import { VALID_STEPS, type ActionSettings, type PressAction, type StepPercent, type VolumeMode } from "./types.js";
 
 const DEFAULTS: ActionSettings = {
   mode: "application",
@@ -47,7 +47,7 @@ export function normalizeSettings(
     executable: mode === "master" ? "" : executable,
     displayName: mode === "master" ? (displayName || "SYSTEM") : displayName,
     step,
-    pressAction: "toggleMute",
+    pressAction: normalizePressAction(input.pressAction),
     sessionMode,
   };
 
@@ -56,6 +56,13 @@ export function normalizeSettings(
   const sessionId = asString(input.sessionId);
   if (sessionId) settings.sessionId = sessionId;
   return settings;
+}
+
+export function normalizePressAction(value: unknown): PressAction {
+  if (value === "volumeUp" || value === "volumeDown" || value === "toggleMute") {
+    return value;
+  }
+  return "toggleMute";
 }
 
 export function normalizeStep(value: unknown): StepPercent {

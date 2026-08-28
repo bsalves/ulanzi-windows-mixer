@@ -40,7 +40,7 @@ function collectSettings() {
     executable: master ? "" : executableSelect.value,
     displayName: master ? "SYSTEM" : selectedLabel(),
     step: Number(document.getElementById("step").value) || 2,
-    pressAction: "toggleMute",
+    pressAction: document.getElementById("pressAction").value || "toggleMute",
     sessionMode: document.getElementById("sessionMode").value === "first" ? "first" : "all",
   };
 }
@@ -83,6 +83,7 @@ function applySettings(settings) {
   if (!settings) return;
   currentSettings = { ...currentSettings, ...settings };
   document.getElementById("step").value = String(currentSettings.step || 2);
+  document.getElementById("pressAction").value = currentSettings.pressAction || "toggleMute";
   document.getElementById("sessionMode").value = currentSettings.sessionMode === "first" ? "first" : "all";
   if (currentSettings.executable) executableSelect.value = currentSettings.executable;
   applyLayout();

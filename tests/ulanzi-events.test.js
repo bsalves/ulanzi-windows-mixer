@@ -60,6 +60,28 @@ describe("Ulanzi encoder and keypad events", () => {
     assert.equal(host.lastIcon(ctx).state, 0);
   });
 
+  it("uses keypad press as volume up and down for the same app", async () => {
+    const { actions, host } = await setup("application");
+    const up = `${APP_UUID}___up___a`;
+    const down = `${APP_UUID}___down___a`;
+    actions.upsert(
+      up,
+      { mode: "application", executable: "Discord.exe", displayName: "Discord", step: 2, pressAction: "volumeUp" },
+      APP_UUID,
+    );
+    actions.upsert(
+      down,
+      { mode: "application", executable: "Discord.exe", displayName: "Discord", step: 2, pressAction: "volumeDown" },
+      APP_UUID,
+    );
+    await actions.refresh(up);
+    await actions.press(up);
+    assert.equal(host.lastIcon(up).text, "52%");
+    await new Promise((resolve) => setTimeout(resolve, 220));
+    await actions.press(down);
+    assert.equal(host.lastIcon(down).text, "50%");
+  });
+
   it("updates the encoder feedback layout", async () => {
     const { host, ctx } = await setup("master");
     assert.ok(host.feedbackLayouts.some((item) => item.layout === "$UA1"));
