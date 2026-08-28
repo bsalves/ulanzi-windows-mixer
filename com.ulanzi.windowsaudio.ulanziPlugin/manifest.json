@@ -1,0 +1,62 @@
+{
+  "Author": "Bruno Alves",
+  "Name": "Windows Audio Mixer",
+  "Description": "Control Windows master volume and per-application sessions from Ulanzi knobs and keys using WASAPI.",
+  "Icon": "resources/icons/plugin.svg",
+  "Version": "1.0.0",
+  "Category": "Audio",
+  "CategoryIcon": "resources/icons/plugin.svg",
+  "CodePath": "plugin/app.js",
+  "Type": "JavaScript",
+  "Inspect": "--inspect=127.0.0.1:9217",
+  "UUID": "com.ulanzi.ulanzistudio.windowsaudio",
+  "Actions": [
+    {
+      "Name": "Windows Master Volume",
+      "Icon": "resources/icons/master.svg",
+      "PropertyInspectorPath": "property-inspector/inspector.html",
+      "Tooltip": "Control the Windows master output volume",
+      "UUID": "com.ulanzi.ulanzistudio.windowsaudio.master",
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": ["Keypad", "Encoder"],
+      "Devices": [],
+      "Encoder": {
+        "layout": "$UA1"
+      },
+      "state": 0,
+      "States": [
+        { "Name": "Unmuted", "Image": "resources/icons/speaker.svg" },
+        { "Name": "Muted", "Image": "resources/icons/muted.svg" }
+      ]
+    },
+    {
+      "Name": "Application Volume",
+      "Icon": "resources/icons/application.svg",
+      "PropertyInspectorPath": "property-inspector/inspector.html",
+      "Tooltip": "Control the volume of a specific Windows application",
+      "UUID": "com.ulanzi.ulanzistudio.windowsaudio.application",
+      "SupportedInMultiActions": true,
+      "DisableAutomaticStates": true,
+      "Controllers": ["Keypad", "Encoder"],
+      "Devices": [],
+      "Encoder": {
+        "layout": "$UA1"
+      },
+      "state": 0,
+      "States": [
+        { "Name": "Unmuted", "Image": "resources/icons/speaker.svg" },
+        { "Name": "Muted", "Image": "resources/icons/muted.svg" }
+      ]
+    }
+  ],
+  "OS": [
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Software": {
+    "MinVersion": "3.0.11"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "Name": "Windows 音频混音器",
+  "Description": "通过 Ulanzi 旋钮和按键控制 Windows 系统音量以及各应用程序音量。",
+  "Actions": [
+    {
+      "Name": "Windows 主音量",
+      "Tooltip": "控制 Windows 主输出音量"
+    },
+    {
+      "Name": "应用程序音量",
+      "Tooltip": "控制指定 Windows 应用程序的音量"
+    }
+  ],
+  "Localization": {
+    "Mode": "模式",
+    "Master Volume": "主音量",
+    "Application Volume": "应用程序音量",
+    "Input Volume (soon)": "输入音量（即将推出）",
+    "Output Volume (soon)": "输出音量（即将推出）",
+    "Application": "应用程序",
+    "Applications appear automatically when they play audio.": "应用程序开始播放音频后会自动出现在列表中。",
+    "Step": "步进",
+    "Press action": "按下动作",
+    "Toggle Mute": "切换静音",
+    "Sessions": "会话",
+    "All sessions": "全部会话",
+    "First session": "第一个会话",
+    "Applications": "应用程序",
+    "Refresh Applications": "刷新应用程序",
+    "Debug logs": "调试日志",
+    "Off": "关",
+    "On": "开",
+    "Select application": "选择应用程序",
+    "Connecting to Windows audio helper...": "正在连接 Windows 音频助手...",
+    "Windows audio helper is unavailable.": "Windows 音频助手不可用。"
+  }
+}

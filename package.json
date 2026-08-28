@@ -1,0 +1,22 @@
+{
+  "name": "ulanzi-windows-audio-mixer",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ulanzi Studio plugin for Windows master and per-application volume control via WASAPI.",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch",
+    "test": "npm run build && node --test --test-reporter=spec tests/*.test.js",
+    "sync-sdk": "node scripts/sync-sdk.mjs",
+    "package": "npm test && node scripts/package.mjs",
+    "install:plugin": "node scripts/install-plugin.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "typescript": "^5.7.0"
+  }
+}

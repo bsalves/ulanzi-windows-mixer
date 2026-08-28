@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144" viewBox="0 0 144 144">
+  <rect width="144" height="144" rx="28" fill="#14161b"/>
+  <rect x="30" y="40" width="84" height="64" rx="12" fill="#1f242c" stroke="#00FFE6" stroke-width="4"/>
+  <rect x="42" y="56" width="10" height="32" rx="3" fill="#00FFE6"/>
+  <rect x="60" y="48" width="10" height="40" rx="3" fill="#5eead4"/>
+  <rect x="78" y="62" width="10" height="26" rx="3" fill="#00FFE6"/>
+  <rect x="96" y="52" width="10" height="36" rx="3" fill="#2dd4bf"/>
+  <text x="72" y="128" text-anchor="middle" fill="#d8d8d8" font-size="16" font-family="Segoe UI, sans-serif" font-weight="700">APP</text>
+</svg>

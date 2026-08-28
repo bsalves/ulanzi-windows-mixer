@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="144" viewBox="0 0 144 144">
+  <rect width="144" height="144" rx="28" fill="#14161b"/>
+  <path d="M38 78V58h14l24-20v64L52 78z" fill="#00FFE6"/>
+  <path d="M92 52c16 12 16 40 0 52" fill="none" stroke="#00FFE6" stroke-width="8" stroke-linecap="round"/>
+  <path d="M80 62c8 8 8 24 0 32" fill="none" stroke="#00FFE6" stroke-width="8" stroke-linecap="round"/>
+  <text x="72" y="128" text-anchor="middle" fill="#d8d8d8" font-size="18" font-family="Segoe UI, sans-serif" font-weight="700">SYS</text>
+</svg>

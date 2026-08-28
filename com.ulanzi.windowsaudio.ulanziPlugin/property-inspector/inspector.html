@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Windows Audio Mixer</title>
+    <link rel="stylesheet" href="../libs/css/uspi.css" />
+    <style>
+      .hint {
+        margin: 0 10px 12px calc(var(--uspi-label-width) + 20px);
+        color: var(--uspi-unitcolor);
+        font-size: 12px;
+        line-height: 16px;
+      }
+      .status {
+        margin: 10px;
+        padding: 8px 10px;
+        border: 1px solid var(--uspi-bordercolor);
+        border-radius: var(--uspi-borderradius);
+        color: var(--uspi-unitcolor);
+        font-size: 12px;
+      }
+      .uspi-item-value {
+        flex: 1;
+        min-width: 0;
+        height: var(--uspi-height);
+        background: var(--uspi-inputbg);
+        color: var(--uspi-textcolor);
+        border: 1px solid var(--uspi-bordercolor);
+        border-radius: var(--uspi-borderradius);
+        padding: 0 8px;
+      }
+      button.uspi-item-value {
+        cursor: pointer;
+        color: #111;
+        background: var(--uspi-theme);
+        border: 0;
+        font-weight: 600;
+      }
+      .hidden {
+        display: none !important;
+      }
+    </style>
+    <script src="../libs/js/constants.js"></script>
+    <script src="../libs/js/eventEmitter.js"></script>
+    <script src="../libs/js/timers.js"></script>
+    <script src="../libs/js/utils.js"></script>
+    <script src="../libs/js/ulanziApi.js"></script>
+  </head>
+  <body>
+    <div class="uspi-wrapper">
+      <form id="property-inspector">
+        <div class="uspi-item hidden" id="row-mode">
+          <div class="uspi-item-label" data-localize>Mode</div>
+          <select class="uspi-item-value" name="mode" id="mode">
+            <option value="master" data-localize="Master Volume">Master Volume</option>
+            <option value="application" data-localize="Application Volume">Application Volume</option>
+            <option value="input" disabled data-localize="Input Volume (soon)">Input Volume (soon)</option>
+            <option value="output" disabled data-localize="Output Volume (soon)">Output Volume (soon)</option>
+          </select>
+        </div>
+
+        <div class="uspi-item" id="row-application">
+          <div class="uspi-item-label" data-localize>Application</div>
+          <select class="uspi-item-value" name="executable" id="executable">
+            <option value="">Select application</option>
+          </select>
+        </div>
+        <div class="hint" id="app-hint" data-localize>
+          Applications appear automatically when they play audio.
+        </div>
+
+        <div class="uspi-item">
+          <div class="uspi-item-label" data-localize>Step</div>
+          <select class="uspi-item-value" name="step" id="step">
+            <option value="1">1%</option>
+            <option value="2" selected>2%</option>
+            <option value="5">5%</option>
+            <option value="10">10%</option>
+          </select>
+        </div>
+
+        <div class="uspi-item">
+          <div class="uspi-item-label" data-localize>Press action</div>
+          <select class="uspi-item-value" name="pressAction" id="pressAction">
+            <option value="toggleMute" data-localize="Toggle Mute">Toggle Mute</option>
+          </select>
+        </div>
+
+        <div class="uspi-item" id="row-session-mode">
+          <div class="uspi-item-label" data-localize>Sessions</div>
+          <select class="uspi-item-value" name="sessionMode" id="sessionMode">
+            <option value="all" data-localize="All sessions">All sessions</option>
+            <option value="first" data-localize="First session">First session</option>
+          </select>
+        </div>
+
+        <div class="uspi-item" id="row-refresh">
+          <div class="uspi-item-label" data-localize>Applications</div>
+          <button type="button" class="uspi-item-value" id="refresh" data-localize>Refresh Applications</button>
+        </div>
+
+        <div class="uspi-item">
+          <div class="uspi-item-label" data-localize>Debug logs</div>
+          <select class="uspi-item-value" name="debug" id="debug">
+            <option value="0" data-localize="Off">Off</option>
+            <option value="1" data-localize="On">On</option>
+          </select>
+        </div>
+      </form>
+      <div class="status" id="status" data-localize>Connecting to Windows audio helper...</div>
+    </div>
+    <script src="inspector.js"></script>
+  </body>
+</html>

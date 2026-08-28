@@ -1,0 +1,37 @@
+{
+  "Name": "Mixer de Áudio do Windows",
+  "Description": "Controle o volume master do Windows e o volume de cada aplicativo pelos knobs e botões Ulanzi.",
+  "Actions": [
+    {
+      "Name": "Volume Master do Windows",
+      "Tooltip": "Controla o volume de saída master do Windows"
+    },
+    {
+      "Name": "Volume do Aplicativo",
+      "Tooltip": "Controla o volume de um aplicativo específico do Windows"
+    }
+  ],
+  "Localization": {
+    "Mode": "Modo",
+    "Master Volume": "Volume Master",
+    "Application Volume": "Volume do Aplicativo",
+    "Input Volume (soon)": "Volume de entrada (em breve)",
+    "Output Volume (soon)": "Volume de saída (em breve)",
+    "Application": "Aplicativo",
+    "Applications appear automatically when they play audio.": "Os aplicativos aparecem automaticamente quando reproduzem áudio.",
+    "Step": "Incremento",
+    "Press action": "Ação ao pressionar",
+    "Toggle Mute": "Ativar/desativar mudo",
+    "Sessions": "Sessões",
+    "All sessions": "Todas as sessões",
+    "First session": "Primeira sessão",
+    "Applications": "Aplicativos",
+    "Refresh Applications": "Atualizar aplicativos",
+    "Debug logs": "Logs de debug",
+    "Off": "Desligado",
+    "On": "Ligado",
+    "Select application": "Selecionar aplicativo",
+    "Connecting to Windows audio helper...": "Conectando ao helper de áudio do Windows...",
+    "Windows audio helper is unavailable.": "O helper de áudio do Windows está indisponível."
+  }
+}

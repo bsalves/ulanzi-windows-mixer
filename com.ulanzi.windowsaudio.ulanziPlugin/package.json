@@ -1,0 +1,10 @@
+{
+  "name": "com.ulanzi.windowsaudio.ulanziPlugin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Ulanzi Studio Windows Audio Mixer plugin runtime",
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

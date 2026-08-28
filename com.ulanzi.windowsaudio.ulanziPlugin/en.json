@@ -1,0 +1,37 @@
+{
+  "Name": "Windows Audio Mixer",
+  "Description": "Control Windows master volume and per-application audio sessions from Ulanzi knobs and keys.",
+  "Actions": [
+    {
+      "Name": "Windows Master Volume",
+      "Tooltip": "Control the Windows master output volume"
+    },
+    {
+      "Name": "Application Volume",
+      "Tooltip": "Control the volume of a specific Windows application"
+    }
+  ],
+  "Localization": {
+    "Mode": "Mode",
+    "Master Volume": "Master Volume",
+    "Application Volume": "Application Volume",
+    "Input Volume (soon)": "Input Volume (soon)",
+    "Output Volume (soon)": "Output Volume (soon)",
+    "Application": "Application",
+    "Applications appear automatically when they play audio.": "Applications appear automatically when they play audio.",
+    "Step": "Step",
+    "Press action": "Press action",
+    "Toggle Mute": "Toggle Mute",
+    "Sessions": "Sessions",
+    "All sessions": "All sessions",
+    "First session": "First session",
+    "Applications": "Applications",
+    "Refresh Applications": "Refresh Applications",
+    "Debug logs": "Debug logs",
+    "Off": "Off",
+    "On": "On",
+    "Select application": "Select application",
+    "Connecting to Windows audio helper...": "Connecting to Windows audio helper...",
+    "Windows audio helper is unavailable.": "Windows audio helper is unavailable."
+  }
+}
