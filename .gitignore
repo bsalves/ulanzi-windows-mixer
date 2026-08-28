@@ -19,7 +19,8 @@ Makefile
 ws-port.js
 com.ulanzi.windowsaudio.ulanziPlugin/node_modules/
 com.ulanzi.windowsaudio.ulanziPlugin/native/*.exe
-coverage/
+native/out/
+native/build/
 .idea/
 .vscode/
 *.user

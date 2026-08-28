@@ -10,26 +10,21 @@ It never opens TCP ports and only accepts a whitelist of JSON commands.
 
 ## Build (Windows x64)
 
-Requirements:
+CMake is **not** required. The helper is compiled with the Visual Studio C++ compiler.
 
-- Visual Studio 2019+ with C++ desktop workload, or Build Tools
-- CMake 3.16+
-
-```bat
-cd native
-cmake -S . -B build -A x64
-cmake --build build --config Release
-copy build\bin\Release\ulanzi-audio-helper.exe ..\com.ulanzi.windowsaudio.ulanziPlugin\native\
+```powershell
+.\scripts\build-native.cmd
 ```
 
-MinGW-w64 is also supported:
+If Visual Studio Build Tools are missing:
 
-```bat
-cmake -S . -B build -G "MinGW Makefiles"
-cmake --build build
+```powershell
+winget install --id Microsoft.VisualStudio.2022.BuildTools -e --override "--wait --passive --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"
 ```
 
-Copy the resulting `ulanzi-audio-helper.exe` into:
+Optional: CMake is still supported if you already have it (`cmake -S native -B native/build -A x64`).
+
+The EXE is copied to:
 
 ```
 com.ulanzi.windowsaudio.ulanziPlugin/native/ulanzi-audio-helper.exe

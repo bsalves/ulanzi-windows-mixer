@@ -1,9 +1,20 @@
 $ErrorActionPreference = "Stop"
 
+$root = Split-Path -Parent $PSScriptRoot
 $pluginName = "com.ulanzi.windowsaudio.ulanziPlugin"
-$source = Join-Path $PSScriptRoot "..\$pluginName"
+$source = Join-Path $root $pluginName
 if (-not (Test-Path $source)) {
   throw "Plugin folder not found: $source"
+}
+
+$helperInSource = Join-Path $source "native\ulanzi-audio-helper.exe"
+if (-not (Test-Path $helperInSource)) {
+  Write-Host "[INFO] Helper EXE is missing. Building it now (Visual Studio C++, CMake not required)..."
+  $buildScript = Join-Path $root "scripts\build-native.ps1"
+  & $buildScript
+  if (-not (Test-Path $helperInSource)) {
+    throw "Failed to build ulanzi-audio-helper.exe. Install Visual Studio Build Tools with C++ and run scripts\build-native.ps1"
+  }
 }
 
 $destRoot = Join-Path $env:APPDATA "Ulanzi\UlanziDeck\Plugins"
@@ -13,11 +24,6 @@ if (Test-Path $dest) {
   Remove-Item -Recurse -Force $dest
 }
 Copy-Item -Recurse $source $dest
-
-$helper = Join-Path $dest "native\ulanzi-audio-helper.exe"
-if (-not (Test-Path $helper)) {
-  Write-Warning "ulanzi-audio-helper.exe is missing. Build native/ on Windows and copy the EXE into native\ before using the plugin."
-}
 
 Write-Host "Installed $pluginName to:"
 Write-Host "  $dest"

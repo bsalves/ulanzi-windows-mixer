@@ -41,45 +41,33 @@ A implementação segue o [UlanziDeck Plugin SDK](https://github.com/UlanziTechn
 
 ## Instalação
 
-### 1. Compilar o helper nativo (obrigatório no Windows)
+Requisito no Windows: **Visual Studio 2022 Build Tools** com C++ (o CMake **não** é obrigatório).
 
-```bat
-cd native
-cmake -S . -B build -A x64
-cmake --build build --config Release
-copy build\bin\Release\ulanzi-audio-helper.exe ..\com.ulanzi.windowsaudio.ulanziPlugin\native\
+Se ainda não tiver o compilador:
+
+```powershell
+winget install --id Microsoft.VisualStudio.2022.BuildTools -e --override "--wait --passive --add Microsoft.VisualStudio.Workload.VCTools --includeRecommended"
 ```
 
-### 2. Compilar o plugin Node
+Ou instale o Visual Studio 2022 com o workload **Desktop development with C++**.
 
-```bat
-npm install
-npm run build
-cd com.ulanzi.windowsaudio.ulanziPlugin
-npm install --omit=dev
+Depois, no PowerShell, na pasta do repositório:
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+.\scripts\build-native.cmd
+.\installer\install.cmd
 ```
 
-### 3. Copiar para o Ulanzi Studio
+O script do helper usa o compilador do Visual Studio (`cl.exe`). CMake só é usado se já estiver instalado e o Visual Studio não for encontrado.
+
+Feche o Ulanzi Studio pelo ícone da bandeja (Exit) e abra de novo.
 
 Pasta de plugins:
 
 ```text
 %APPDATA%\Ulanzi\UlanziDeck\Plugins\
 ```
-
-Instalação rápida:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File installer\install.ps1
-```
-
-Ou:
-
-```bat
-npm run install:plugin
-```
-
-Feche o Ulanzi Studio pelo ícone da bandeja (Exit) e abra de novo.
 
 Instalador Inno Setup (opcional, gera EXE x64):
 
